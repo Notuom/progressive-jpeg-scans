@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="This web page renders separate scans from progressive JPEG files."
+    />
+    <title>Progressive JPEG Visualization Tool</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      .carousel-container {
+        background: black;
+        padding: 30px 0;
+      }
+      .carousel-inner img {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <h1>Progressive JPEG Visualization Tool</h1>
+
+      <h2>What is this?</h2>
+      <p>
+        This web page renders progressive scans for JPEG files. This is useful
+        in troubleshooting image encoding or checking what the worst-case user
+        experience might look like under bad network conditions.
+      </p>
+      <p>
+        Just upload an image below and you will be able to switch between
+        different scans if the JPEG is progressive.
+      </p>
+      <p>
+        For any issues / comments / suggestions, visit the
+        <a href="https://github.com/Notuom/progressive-jpeg-scans"
+          >GitHub repository for this tool: Notuom/progressive-jpeg-scans</a
+        >. Feel free to open an issue or pull request.
+      </p>
+
+      <h2>Technical Details</h2>
+      <p>
+        This page uses an adapted version of
+        <a
+          href="https://gist.github.com/kdzwinel/a0bb9474b10fe1003e39cc3b87588531"
+          ><code>jsk</code></a
+        >
+        that has been modified to run on
+        <a href="https://webassembly.org/">Web Assembly</a>. It is compiled
+        using <a href="https://emscripten.org/">emscripten</a> and uses
+        <a href="https://getbootstrap.com/">Bootstrap</a> and its Carousel
+        component in order to display the different scans.
+      </p>
+      <input
+        type="file"
+        accept="image/jpeg"
+        class="form-control"
+        id="image-selector"
+      />
+    </div>
+
+    <div id="scan-container" style="display: none;">
+      <hr />
+
+      <div class="container-fluid text-center">
+        <div>
+          <span class="carousel-current-slide">1</span>
+          /
+          <span class="carousel-total-slides"></span>
+          scans
+        </div>
+      </div>
+
+      <div class="carousel-container">
+        <div class="container-fluid">
+          <div id="scan-carousel" class="carousel slide carousel-fade">
+            <div class="carousel-inner text-center"></div>
+            <a
+              class="carousel-control-prev"
+              href="#scan-carousel"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#scan-carousel"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid text-center">
+        <div>
+          <span class="carousel-current-slide">1</span>
+          /
+          <span class="carousel-total-slides"></span>
+          scans
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="image_web.js"></script>
+    <script src="file_selector.js"></script>
+  </body>
+</html>
