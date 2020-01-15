@@ -1,6 +1,6 @@
 # Progressive JPEG Visualization Tool
 
-[View tool live on GitHub Pages](https://pages.github.com/Notuom/progressive-jpeg-scans/)
+[View tool live on GitHub Pages](https://notuom.github.io/progressive-jpeg-scans/)
 
 ## What is this?
 
