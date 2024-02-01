@@ -11,6 +11,7 @@ $(() => {
             filename.startsWith("scan_")
           );
 
+          $("#scan-carousel .carousel-inner").empty();
           $(".carousel-total-slides").text(files.length);
 
           for (let i = 0; i < files.length; i++) {
